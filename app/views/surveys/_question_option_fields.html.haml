@@ -1,0 +1,5 @@
+.nested-fields.py-2
+  .form-check
+    %input.form-check-input{:disabled => "disabled", :type => "radio"}
+    = f.input :name, label: false, placeholder: 'Option name'
+  = link_to_remove_association "remove option", f

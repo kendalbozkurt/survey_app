@@ -1,0 +1,18 @@
+%main
+  %section.py-5.text-center.container
+    = link_to "Back To Surveys" ,surveys_path, class: 'btn btn-primary'
+    .row.py-lg-4
+      .col-lg-6.col-md-8.mx-auto
+        = simple_form_for @survey, url: surveys_path, html: { class: 'jsValidate' }, method: :post, :validate => true do |f|
+          .form-group
+            = f.input :title, required: true
+          .form-group
+            = f.input :description
+          %h3 Questions
+          #questions
+            = f.simple_fields_for :questions do |question|
+              = render 'question_fields', f: question
+            .links
+              = link_to_add_association 'Add Question', f, :questions
+          .form-group
+            = f.submit "Save", class: 'btn btn-primary'

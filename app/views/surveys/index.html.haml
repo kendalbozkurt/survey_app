@@ -1,0 +1,19 @@
+%main
+  %section.py-5.text-center.container
+    .row.py-lg-5
+      .col-lg-6.col-md-8.mx-auto
+        %h1.fw-light Surveys
+        %table.table-striped.table
+          %thead
+            %tr
+              %th Name
+              %th Description
+              %th Questions
+          %tbody
+            - @surveys.each do |survey|
+              %tr
+                %td=survey.title
+                %td=survey.description
+                %td=survey.questions.length
+        %p
+          = link_to "New Survey", new_survey_path, class: 'btn btn-primary'

@@ -1,0 +1,9 @@
+.nested-fields
+  = f.input :question
+  = f.input :question_type, collection: [['Paragraph', 'paragraph'], ['Multiple choice', 'option']], input_html: {class: 'form-select', id: 'question-type'}
+  #question-options.invisible
+    = f.simple_fields_for :question_options do |option|
+      = render 'question_option_fields', f: option
+    .links
+      = link_to_add_association 'Add Option', f, :question_options
+  = link_to_remove_association "remove question", f
