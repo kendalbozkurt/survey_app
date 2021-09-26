@@ -3,9 +3,9 @@ ready = ->
     selected = $(this).find('option:selected')
     el = $(this).parent().parent().find('#question-options')
     if selected.val() == 'option'
-      el.removeClass("invisible");
+      el.removeClass("d-none");
     else
-      el.addClass("invisible");
+      el.addClass("d-none");
 
 $(document).on 'ready page:load', ->
 
