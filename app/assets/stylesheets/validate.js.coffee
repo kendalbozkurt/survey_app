@@ -8,7 +8,7 @@ ready = ->
     length = val.replace(/\s/g, '').length
 
     if input.attr('required') != undefined && length == 0
-      return [false, "zorunlu alan"]
+      return [false, "can't be blank"]
 
   # Validate text inputs
   validateInputText = (input) ->
@@ -23,13 +23,6 @@ ready = ->
 
   $(document).on 'keyup change', 'input[type="text"]', ->
     validateInputText($(this))
-  # Prevent submitting form if its invalid
-  $(document).on 'ajax:beforeSend', 'form.jsValidate', (e) ->
-    if $(e.target).is('form')
-      validateForm($(this), e)
-
-  $(document).on 'submit', 'form.jsValidate', (e) ->
-    validateForm($(this), e)
 
 $(document).on 'ready page:load', ->
 

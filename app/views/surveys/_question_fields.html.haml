@@ -1,5 +1,5 @@
 .nested-fields
-  = f.input :question
+  = f.input :question, required: true
   = f.input :question_type, collection: [['Paragraph', 'paragraph'], ['Multiple choice', 'option']], input_html: {class: 'form-select', id: 'question-type'}
   #text-area-field.d-none.form-group
     %textarea.form-control{disabled: "disabled", placeholder: 'Text area'}

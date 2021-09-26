@@ -13,6 +13,7 @@ class SurveysController < ApplicationController
     if @survey.save
       redirect_to surveys_path
     else
+      flash.now['danger'] = @survey.errors.full_messages
       render :new
     end
   end
