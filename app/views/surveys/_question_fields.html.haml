@@ -1,6 +1,8 @@
 .nested-fields
   = f.input :question
   = f.input :question_type, collection: [['Paragraph', 'paragraph'], ['Multiple choice', 'option']], input_html: {class: 'form-select', id: 'question-type'}
+  #text-area-field.d-none.form-group
+    %textarea.form-control{disabled: "disabled", placeholder: 'Text area'}
   #question-options.d-none
     = f.simple_fields_for :question_options do |option|
       = render 'question_option_fields', f: option
