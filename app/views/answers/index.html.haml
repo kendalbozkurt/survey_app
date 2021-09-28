@@ -1,1 +1,22 @@
-asdas
+%main
+  %section.py-5.text-center.container
+    .row.py-lg-5
+      .col-lg-6.col-md-8.mx-auto
+        = link_to "Back To Surveys" ,surveys_path, class: 'btn btn-primary'
+        %h1.fw-light Answers
+        %table.table-striped.table
+          %thead
+            %tr
+              %th Survey
+              %th Question
+              %th Answered
+              %th Question Type
+          %tbody
+            - @questions.each do |question|
+              %tr
+                %td=question.survey.title
+                %td=question.question
+                %td=question.answers.count
+                %td=question.question_type
+        %p
+          = link_to "New Survey", new_survey_path, class: 'btn btn-primary'

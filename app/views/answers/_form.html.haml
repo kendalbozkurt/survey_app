@@ -9,11 +9,11 @@
           .form-group
             = question.question
           = f.simple_fields_for question.answers.new do |answer|
-            = answer.input :question_id, as: :hidden, input_html: { value: question.id, name: "survey[answers][][question_id]" }
+            = answer.input :question_id, as: :hidden, input_html: { value: question.id, name: "survey[answers][answer-#{question.id}][question_id]" }
             - if question.question_type == 'paragraph'
-              = answer.input :answer_text, as: :text, placeholder: "Your answer", label: false, input_html: { name: "survey[answers][][answer_text]" }
+              = answer.input :answer_text, as: :text, placeholder: "Your answer", label: false, input_html: { name: "survey[answers][answer-#{question.id}][answer_text]" }
             - else
-              = answer.input :question_option_id, legend_tag: false, input_html: { name: "survey[answers][][question_option_id]" }, as: :radio_buttons, label: false,
+              = answer.input :question_option_id, legend_tag: false, input_html: { name: "survey[answers][answer-#{question.id}][question_option_id]" }, as: :radio_buttons, label: false,
                 collection: question.question_options.map{|x| [x['name'], x['id']] },
                 item_wrapper_class: 'inline',
                 label_method: :first,

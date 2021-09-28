@@ -23,7 +23,7 @@ class SurveysController < ApplicationController
     params.require(:survey).permit(:title, :description, questions_attributes:
     [
         :question,
-        :type,
+        :question_type,
         question_options_attributes: [
             :name
         ]
