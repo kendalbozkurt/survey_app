@@ -2,6 +2,7 @@
   %section.py-5.text-center.container
     = link_to "Back To Surveys" ,surveys_path, class: 'btn btn-primary'
     = simple_form_for @survey, url: answers_path, method: :post do |f|
+      = f.input :survey_id, as: :hidden, input_html: { value: @survey.id, name: "survey_id" }
       .form-group
         = @survey.title
       .form-group

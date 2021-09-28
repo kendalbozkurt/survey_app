@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  before_action :set_survey, only: [:new]
+  before_action :set_survey, only: [:new, :create]
 
   def index
     @questions = Question.all
@@ -11,10 +11,11 @@ class AnswersController < ApplicationController
 
   def create
     @answers = Answer.create(params['survey']['answers'].values)
-    if @answers.present?
-      redirect_to answers_path
+    if @answers.pluck(:id).compact.empty?
+      flash['danger'] = ["You must answer at least one question"]
+      redirect_to new_survey_answers_path(@survey)
     else
-      render :new
+      redirect_to answers_path
     end
   end
 
