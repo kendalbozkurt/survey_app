@@ -1,7 +1,7 @@
 class SurveysController < ApplicationController
 
   def index
-    @surveys = Survey.all
+    @surveys = Survey.select("surveys.*, count(questions.id) as questions_count").joins(:questions).group("surveys.id")
   end
 
   def new

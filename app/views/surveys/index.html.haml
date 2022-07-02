@@ -16,7 +16,7 @@
               %tr
                 %td=survey.title
                 %td=survey.description
-                %td=survey.questions.length
+                %td=survey.questions_count
                 %td=link_to 'Start Survey', new_survey_answers_path(survey)
         %p
           = link_to "New Survey", new_survey_path, class: 'btn btn-primary'
