@@ -2,7 +2,7 @@ class AnswersController < ApplicationController
   before_action :set_survey, only: [:new, :create]
 
   def index
-    @questions = Question.all
+    @questions = Question.select("questions.*, COUNT(answers.id) as answers_count").joins(:answers).includes(:survey).group("questions.id").distinct
   end
 
   def new

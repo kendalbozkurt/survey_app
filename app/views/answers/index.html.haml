@@ -13,11 +13,10 @@
               %th Question Type
           %tbody
             - @questions.each do |question|
-              -if question.answers.count >= 1
-                %tr
-                  %td=question.survey.title
-                  %td=question.question
-                  %td=question.answers.count
-                  %td=question.question_type
+              %tr
+                %td=question.survey.title
+                %td=question.question
+                %td=question.answers_count
+                %td=question.question_type
         %p
           = link_to "New Survey", new_survey_path, class: 'btn btn-primary'
